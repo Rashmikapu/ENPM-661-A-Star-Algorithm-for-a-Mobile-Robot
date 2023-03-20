@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# In[1]:
 
 
 #https://github.com/Rashmikapu/ENPM-661-A-Star-Algorithm-for-a-Mobile-Robot.git
@@ -20,13 +17,13 @@ import math
 
 #def goal_tresh():
 
-
+#rounds to the nearest 0.5
 def round_nearest(a):
     return round(a * 2) / 2
 
 
 
-
+#finds Euclidean distance which is the heuristic (cost to go)
 def Euclidean_distance(node_1,node_2):
     #print(node_1,node_2)
     node1=copy.deepcopy(node_1)
@@ -37,7 +34,7 @@ def Euclidean_distance(node_1,node_2):
     y2=node2[1]
     return (math.sqrt((y2-y1)**2+(x2-x1)**2))
 
-
+#checks if current node lies in the 1.5 radius around the goal units
 def goal_thresh(start,goal):
     x1=start[0]
     y1=start[1]
@@ -50,7 +47,7 @@ def goal_thresh(start,goal):
     else:
         return False
 
-
+#backtracks and prints the nodes + visualisation
 def Backtrack( closed_list,initial_state, final_state, canvas):
     #final=[final_state[0],final_state[1]]
     #print(S)
@@ -104,7 +101,7 @@ def Backtrack( closed_list,initial_state, final_state, canvas):
     
 
     
-    
+#checks if the node is already visited    
 def check_duplicate(node,visited):
    # print(visited)
     if (visited[int(node[0]*2),int(node[1]*2),int(node[2]%30)]==1):
@@ -115,7 +112,7 @@ def check_duplicate(node,visited):
         return False
     
     
-#move-up     
+#move-up-forward 60= backward movement in terms of opencv canvas coordinates     
 def forward_60( node,canvas,visited,L):
     #print(node)
     angle=node[2]-60
@@ -244,7 +241,7 @@ def backward_30( node,canvas,visited,L):
     
 
 
-# In[3]:
+#A* algo
 
 
 def A_star(start_node, goal_node,canvas,L):
@@ -319,7 +316,6 @@ def A_star(start_node, goal_node,canvas,L):
         print("Goal cannot be reached")
 
 
-# In[4]:
 
 
 if __name__ == '__main__': 
