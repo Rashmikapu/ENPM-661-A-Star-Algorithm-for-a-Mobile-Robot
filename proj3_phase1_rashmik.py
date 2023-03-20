@@ -419,7 +419,7 @@ if __name__ == '__main__':
            
            
            
-           
+   #checks validity of inputs        
    while(1):
        x1=input("Enter start point X coordinate: ")
        y1=input("Enter start point Y coordinate: ")
